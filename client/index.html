@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="sample">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>NOTES</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Js Files -->
+    <script src="js/angular.min.js"></script>
+    <script src="app/app.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-controller="demoCtrl">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-md-3"></div>
+  				<div class="col-md-6">
+  					<div class="box">
+						<input type="text" placeholder="Title" size="20" ng-model="title" class="title"></input>
+						<textarea placeholder="Description" ng-model="desc" class="desc" rows="2"></textarea>
+						<button ng-click="addToList()" class="done">DONE</button>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-3" ng-repeat="val in notes track by $index">
+  					<keep><keep>
+				</div>
+  			</div>
+        
+  		</div>
+        <div class="edit" ng-show="myvalue">
+		    <div class="col-md-3"></div>
+		    <div class="col-md-6">
+		        <div class= "box2" style="background-color: {{bgColor}}">
+		            <input type="text" placeholder="Title" size="20" ng-model="title1" class="title" style="background-color: {{bgColor}}"></input>
+					   	<textarea placeholder="Description" ng-model="desc1" class="desc" rows="2" style="background-color: {{bgColor}}"></textarea>
+						<button ng-click="addToList()" class="done" style="background-color: {{bgColor}}">DONE</button>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

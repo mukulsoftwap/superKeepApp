@@ -1,0 +1,75 @@
+ul {
+    list-style-type: none;
+}
+li {
+    padding-bottom: 10px;
+}
+input {
+    outline: none;
+}
+.box{
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.35);
+    background: white;
+    margin-top: 50px;
+}
+.box2{
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.35);
+    margin-top: 100px;
+    height: 150px;
+}
+.edit{
+     position: fixed;
+     top: 0px;
+     height: 100%;
+     width: 100%;
+     background: rgba(119, 114, 119, 0.59);
+}
+.notes {
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.35);
+    min-height: 80px;
+    background: white; 
+    padding:10px;
+    margin-top: 30px;
+    word-wrap: break-word;
+}
+.notes h3{
+    margin-top: 0px;
+}
+.notes span{
+    float: right;
+    padding: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.notes span:hover{
+    background-color: #f2f2f2;
+}
+.done {
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    margin: 10px;
+    float: right;
+    border: none;
+    outline: none;
+    background-color: white;
+}
+.done:hover, .done:focus{
+    background-color: #f2f2f2;
+}
+.title{
+    border: none;
+    padding: 10px 10px 5px 10px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    outline: none;
+}
+.desc{
+    border: none;
+    padding: 5px 10px 10px 10px;
+    width: 100%;
+    outline: none;
+}
+body {
+    background: #e8e8e8;
+}
