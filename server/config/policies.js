@@ -17,6 +17,9 @@ module.exports = {
 
     AuthController: {
       '*': true
+    },
+    KeepsController : {
+    	'*' : true
     }
   }
 };

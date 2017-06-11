@@ -24,7 +24,7 @@ module.exports = {
       port: 27017,
       user: '',
       password: '',
-      database: 'sails-rest-api'
+      database: 'keepDb'
     },
 
     /**
