@@ -1,0 +1,31 @@
+<div class="container">
+  			<div class="row">
+  				<div class="col-md-3">
+  					<button ng-click="signOut()">Sign Out</button>
+  				</div>
+  				<div class="col-md-6">
+  					<div class="box">
+						<input type="text" placeholder="Title" size="20" ng-model="title" class="title"></input>
+						<textarea placeholder="Description" ng-model="desc" class="desc" rows="2"></textarea>
+						<button ng-click="addToList()" class="done">DONE</button>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-3" ng-repeat="val in notes track by $index">
+  					<keep><keep>
+				</div>
+  			</div>
+        
+  		</div>
+        <div class="edit" ng-show="myvalue">
+		    <div class="col-md-3"></div>
+		    <div class="col-md-6">
+		        <div class= "box2" style="background-color: {{bgColor}}">
+		            <input type="text" placeholder="Title" size="20" ng-model="title1" class="title" style="background-color: {{bgColor}}"></input>
+					   	<textarea placeholder="Description" ng-model="desc1" class="desc" rows="2" style="background-color: {{bgColor}}"></textarea>
+						<button ng-click="editDone()" class="done" style="background-color: {{bgColor}}">DONE</button>
+				</div>
+			</div>
+		</div>

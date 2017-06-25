@@ -26,27 +26,12 @@ module.exports = {
       unique: true
     },
 
-    firstName: {
-      type: 'string',
-      defaultsTo: ''
-    },
-
-    lastName: {
-      type: 'string',
-      defaultsTo: ''
-    },
-
     photo: {
       type: 'string',
       defaultsTo: '',
       url: true
     },
-
-    socialProfiles: {
-      type: 'object',
-      defaultsTo: {}
-    },
-
+    
     toJSON() {
       let obj = this.toObject();
 

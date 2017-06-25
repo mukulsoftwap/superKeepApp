@@ -25,6 +25,11 @@ module.exports = {
       required : true
     },
 
+    userId : {
+      type : 'string',
+      required : true
+    },
+
     toJSON() {
       return this.toObject();
     }

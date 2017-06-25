@@ -1,14 +1,75 @@
-var app = angular.module('sample',[]);
+var app = angular.module('sample',['ngRoute']);
 
 app.controller('demoCtrl',demoCtrl);
+app.controller('loginCtrl',loginCtrl);
+app.controller('registerCtrl', registerCtrl);
+
+app.config(route);
 
 app.directive('keep', keep);
 
-function demoCtrl($scope, $http){
+
+function route($routeProvider){
+    $routeProvider
+    .when('/login', {
+        templateUrl: 'templates/login.html',
+        controller: 'loginCtrl'
+    })
+    .when('/register', {
+        templateUrl: 'templates/signup.html',
+        controller: 'registerCtrl'
+    })
+    .when('/user', {
+        templateUrl: 'templates/user.html',
+        controller: 'demoCtrl'
+    })
+    .otherwise({ redirectTo: '/login' })
+}
+
+function loginCtrl($scope,$http, $location){
+
+    if(localStorage.getItem('token') != null &&  localStorage.getItem('token')!="")
+        $location.path('/user');
+
+    $scope.signIn = function(){
+        $http.post('http://127.0.0.1:3000/v1/auth/signin',$scope.user).then(function(res){
+            localStorage.setItem('token', res.data.data.token);
+            localStorage.setItem('userId', res.data.data.user.id);
+            $location.path('/user');
+        });
+    }
+
+    $scope.register = function(){
+        $location.path('/register');
+    }
+
+}
+
+function registerCtrl($scope, $http, $location){
+
+    $scope.signup = function(){
+        $http.post('http://127.0.0.1:3000/v1/auth/signup',$scope.user).then(function(res){
+            localStorage.setItem('token',res.data.data.token);
+            localStorage.setItem('userId', res.data.data.user.id);
+            $location.path('/user');
+        })
+    }
+}
+
+function demoCtrl($scope, $http, $location){
 
     $scope.myvalue = false;
     $scope.notes = [];
     $scope.bgColor = "#fff";
+    var userId = localStorage.getItem('userId');
+
+    if(localStorage.getItem('token') == null || localStorage.getItem('token')=="")
+        $location.path('/login');
+
+    $scope.signOut = function(){
+        localStorage.clear('token');
+        $location.path('/login');
+    }
 
     refresh();
 
@@ -18,8 +79,10 @@ function demoCtrl($scope, $http){
             var data = {
                 title : $scope.title, 
                 desc : $scope.desc,
-                color : colors[Math.floor(Math.random()*colors.length)]
+                color : colors[Math.floor(Math.random()*colors.length)],
+                userId : userId
             };
+            console.log(data);
             $http.post('http://127.0.0.1:3000/v1/keeps', data).then(function(res){
                 refresh();
             })
@@ -39,7 +102,7 @@ function demoCtrl($scope, $http){
             var finalObj = {
                 title : $scope.title1, 
                 desc : $scope.desc1,
-                color : $scope.bgColor
+                color : $sceope.bgColor
             }
             $http.put('http://127.0.0.1:3000/v1/keeps/'+$scope.id, finalObj).then(function(res){
                 refresh();
@@ -57,8 +120,10 @@ function demoCtrl($scope, $http){
     }
 
     function refresh(){
-        $http.get('http://127.0.0.1:3000/v1/keeps').then(function(res){
+        console.log("content loaded...");
+        $http.get('http://127.0.0.1:3000/v1/keeps/getUserKeep/'+userId).then(function(res){
             $scope.notes = res.data.data;
+            console.log(res);
         })
     }
 }
